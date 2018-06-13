@@ -1,3 +1,10 @@
+
+// Images rendered to screen and each image has a click event
+// app tracks users score: if user clicks for first time on an image, score increments if a second click score resets to 0 
+// each time an image is clicked the images rendered are shown in a different place (ie all images shuffle)
+// if score is reset, the game restarts
+ 
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
