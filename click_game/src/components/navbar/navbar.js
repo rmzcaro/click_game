@@ -9,7 +9,9 @@ const Navbar = (props) =>  (
             <div className = "float-right">
             <p> Score: 
             <span>{props.score}/12</span> | High Score: 
-            <span>{props.newHighScore}</span>
+            <span>{props.newHighScore}</span> | Loss: 
+            <span>{props.loss}</span> | Win: 
+            <span>{props.win}</span>
             </p>
 
             </div>

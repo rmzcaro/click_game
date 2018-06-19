@@ -24,8 +24,18 @@ let win = 0;
 
 let loss = 0; 
 
+let selectedDom;
+
 // create an App class and it will have all properties of component 
 class App extends Component {
+
+// lifecycle function which fires right after component 
+componentDidMount(){
+//selecting JS DOM 
+selectedDom = document.querySelector(".row");
+
+}
+
 
 state = {
   // initial values now that we have the images 
@@ -33,18 +43,24 @@ state = {
   score: 0,
   highScore: 0, 
   win: 0,
-  loss: 0
+  loss: 0,
 
 }
 
 // check if values have been clicked 
 printNum = (num) => {
+  // reset animation 
+  selectedDom.classList.remove("shake", "bounce");
   if (memoryArr.includes(num)){
     myScore = 0; 
     memoryArr = [];
     newHighScore = 0; 
+    loss++
+    // add animation
+    selectedDom.classList.add("shake");
+
     // show score once change 
-    this.setState({score : myScore})
+    this.setState({score : myScore, loss: loss})
     // lose number
     console.log("lost")
   }
@@ -61,8 +77,15 @@ printNum = (num) => {
     else {
      this.setState({score: myScore, highScore: newHighScore}); 
     }
-  
-
+    if (myScore === 12) {
+      // you've won! So you are resetting! 
+      win++
+      memoryArr =[];
+      myScore = 0; 
+      // selecting items in a class 
+      selectedDom.classList.add("bounce");
+      this.setState({win: win})
+    }
   }
 
 console.log(num);
@@ -80,9 +103,12 @@ let newSort = this.state.characters.sort(function() {
     return (
       <div className="App">
       {/* passing JS */}
+
       <Navbar 
       score = {this.state.score}
-      newHighScore = {this.state.highScore}/>
+      newHighScore = {this.state.highScore}
+      loss = {this.state.loss}
+      win = {this.state.win}/>
         <div className="container">
           <Wrapper>
             {this.state.characters.map((item) => {
