@@ -2,7 +2,7 @@ import React from "react";
 
 // stateless component can be declared as a function 
 const Navbar = (props) =>  (
-            <div className = "navbar navbar-dark bg-success" >
+            <div className = "navbar navbar-dark bg-danger" >
                 <div className = "float-left">
                 Click Game
             </div>
