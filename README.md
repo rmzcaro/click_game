@@ -1,14 +1,14 @@
 # click_game
 
-Draft Readme 
+WHAT IS CLICK ME 
 
-The application should render different images (of your choice) to the screen. Each image should listen for click events.
+The click me is a memory game and it tracks the score, losses, and highest score. 
 
-The application should keep track of the user's score. The user's score should be incremented when clicking an image for the first time. The user's score should be reset to 0 if they click the same image more than once.
+GETTING STARTED 
 
-Every time an image is clicked, the images rendered to the page should shuffle themselves in a random order.
+This application renders images to the screen and once the user clicks on an image the images sort to a random new position. 
 
-Once the user's score is reset after an incorrect guess, the game should restart.
+If the user manages to click on all twelve images only once, the game is won, the highest score is tracked, and the game restarts. If the user clicks twice or more on the same image the game is lost and restarts. 
 
-When complete, the application should be deployed to Github Pages. See the README generated with Create React App for instructions on deploying the application to Github Pages.
+
 
