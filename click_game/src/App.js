@@ -11,29 +11,60 @@ import characters from "./characters.json";
 import Wrapper from "./components/wrapper";
 import ImgCard from "./imgCard";
 import './App.css';
-console.log(characters);
+import Navbar from "./components/navbar";
 
 // compares all clicks 
 let memoryArr = [];
+
+let myScore = 0; 
+
+let newHighScore = 0; 
+
+let win = 0; 
+
+let loss = 0; 
 
 // create an App class and it will have all properties of component 
 class App extends Component {
 
 state = {
   // initial values now that we have the images 
-  characters: characters 
+  characters: characters,
+  score: 0,
+  highScore: 0, 
+  win: 0,
+  loss: 0
+
 }
 
 // check if values have been clicked 
 printNum = (num) => {
   if (memoryArr.includes(num)){
+    myScore = 0; 
+    memoryArr = [];
+    newHighScore = 0; 
+    // show score once change 
+    this.setState({score : myScore})
     // lose number
     console.log("lost")
   }
+  // game continues 
   else  {
     memoryArr.push(num)
-    console.log(memoryArr);
+    // console.log(memoryArr);
+    // add to score if first time clicked 
+    myScore++
+    newHighScore++
+    if (newHighScore <= this.state.highScore) {
+        this.setState({score : myScore})
+    }
+    else {
+     this.setState({score: myScore, highScore: newHighScore}); 
+    }
+  
+
   }
+
 console.log(num);
 // create a shuffle array 
 let newSort = this.state.characters.sort(function() {
@@ -48,6 +79,10 @@ let newSort = this.state.characters.sort(function() {
   render() {
     return (
       <div className="App">
+      {/* passing JS */}
+      <Navbar 
+      score = {this.state.score}
+      newHighScore = {this.state.highScore}/>
         <div className="container">
           <Wrapper>
             {this.state.characters.map((item) => {

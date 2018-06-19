@@ -8,7 +8,7 @@ class ImgCard extends Component {
     // }
     render() {
     return (
-            <div className = "col-md-3 my-3" onClick = {this.props.printNum.bind(this, this.props.id)}>
+            <div className = "col-md-3 my-3 text-center" onClick = {this.props.printNum.bind(this, this.props.id)}>
             {/* the code above is refercing two actions, it's an event listener and also it's passing values from id */}
                 <img src={this.props.imgLink} alt="drstrange" width = "200px" height ="150px"/>
                 
